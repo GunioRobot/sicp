@@ -14,7 +14,7 @@
   (if (empty? xs)
     (reverse result)
     (let [a (first xs)
-	t (pred a)]
+          t (pred a)]
       (if t
 	(calc-parity pred (rest xs) (cons a result))
 	(calc-parity pred (rest xs) result)))))
@@ -28,7 +28,7 @@
   (if (empty? xs)
     nil
     (let [a (first xs)
-	t (pred a)]
+          t (pred a)]
       (if t
 	(cons a (calc-parity-3 pred (rest xs)))
 	(calc-parity-3 pred (rest xs))))))
