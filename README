@@ -13,9 +13,12 @@ namespaces and do:
 > (show painter frame)
 
 where painter is the procedure representing the picture and frame is the
-frame on which you want to draw it.
+frame on which you want to draw it. An example is the 'wave' painter
+defined in the pictlang.pictures namespace.
 
-TODO:
+> (show wave (make-frame (make-vect 0 0)
+                         (make-vect 1 0)
+                         (make-vect 0 1)))
 
-1. make it a lein project.
-2. scan non-programming exercise/solutions and put it as jpg/pdfs.
+The implementation was directly inspired and influenced by the one in the
+JVM based Scheme implementation called JAKLD.
