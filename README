@@ -10,6 +10,7 @@ for background and other information.
 separate namespace. under the 'pictlang' directory. To use this, load the
 namespaces and do:
 
+> (start-picture)
 > (show painter frame)
 
 where painter is the procedure representing the picture and frame is the
