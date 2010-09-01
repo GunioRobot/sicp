@@ -1,6 +1,9 @@
 (ns sicp.ch2-2
   (:refer-clojure :exclude (map remove))
-  (:use [sicp [ch1-2 :only (fib prime?)]]
+  (:use [sicp [ch1-2 :only (fib prime?)]
+              [ex2_23 :only (for-each)]
+              [ex2_44 :only (up-split)]
+              [ex2_50 :only (flip-horiz)]]
         [clojure.test]))
 
 (cons 1
@@ -250,8 +253,10 @@
 
 
 ;;; 2.2.4 picture language
+(declare beside flip-vert)
+
 (defn flipped-pairs [painter]
-  (let [painter2 (beside painter (flipped-vert painter))]
+  (let [painter2 (beside painter (flip-vert painter))]
     (below painter2 painter2)))
 
 (defn right-split [painter n]
@@ -275,3 +280,67 @@
   (let [quarter (corner-split painter n)
         half    (beside (flip-horiz quarter) quarter)]
     (below (flip-vert half) half)))
+
+(defn frame-coord-map [frame]
+  (fn [v]
+    (add-vect
+     (origin-frame frame)
+     (add-vect (scale-vect (edge1-frame frame) (xcor-vect v))
+               (scale-vect (edge2-frame frame) (ycor-vect v))))))
+
+(defn segments->painter [segment-list]
+  (fn [frame]
+    (for-each
+     (fn [segment]
+       (draw-line
+        ((frame-coord-map frame) (start-segment segment))
+        ((frame-coord-map frame) (end-segment segment))))
+     (segment-list))))
+
+;; transformation
+(defn transform-painter [painter origin corner1 corner2]
+  (fn [frame]
+    (let [m (frame-coord-map frame)
+          new-origin (m origin)]
+      (painter (make-frame new-origin
+                           (sub-vect (m corner1) new-origin)
+                           (sub-vect (m corner2) new-origin))))))
+
+(defn flip-vert [painter]
+  (transform-painter painter
+                     (make-vect 0 1)
+                     (make-vect 1 1)
+                     (make-vect 0 0)))
+
+(defn shrink-to-upper-right [painter]
+  (transform-painter painter
+                     (make-vect 0.5 0.5)
+                     (make-vect 1 0.5)
+                     (make-vect 0.5 1)))
+
+(defn rotate90 [painter]
+  (transform-painter painter
+                     (make-vect 1 0)
+                     (make-vect 1 1)
+                     (make-vect 0 0)))
+
+(defn squash-inwards [painter]
+  (transform-painter painter
+                     (make-vect 0.0 0.0)
+                     (make-vect 0.65 0.35)
+                     (make-vect 0.35 0.65)))
+
+(defn beside [painter1 painter2]
+  (let [split-point (make-vect 0.5 1)
+        paint-left (transform-painter painter1
+                                  (make-vect 0 0)
+                                  split-point
+                                  (make-vect 0 1))
+        paint-right (transform-painter painter2
+                                   split-point
+                                   (make-vect 1 1)
+                                   (make-vect 0 1))]
+    (fn [frame]
+      (paint-left frame)
+      (paint-right frame))))
+
