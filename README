@@ -4,6 +4,16 @@ use these programs, add the parent directory of this repo to your classpath.
 See: <http://www.zerobeat.in/2010/03/14/sicp-study/>
 for background and other information.
 
+* A note on section 2.2.4
+
+2.2.4 describes Henderson's picture language. I have implemented this as a
+separate namespace. under the 'pictlang' directory. To use this, load the
+namespaces and do:
+
+> (show painter frame)
+
+where painter is the procedure representing the picture and frame is the
+frame on which you want to draw it.
 
 TODO:
 
