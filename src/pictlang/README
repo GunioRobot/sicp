@@ -1,1 +1,18 @@
-see the notes on the root directory.
+Section 2.2.4 describes Henderson's picture language. I have implemented
+this as a separate namespace. under the 'pictlang' directory. To use this,
+load the namespaces and do:
+
+> (start-picture)
+> (show painter frame)
+
+where painter is the procedure representing the picture and frame is the
+frame on which you want to draw it. An example is the 'wave' painter
+defined in the pictlang.pictures namespace.
+
+> (show wave (make-frame (make-vect 0 0)
+                         (make-vect 1 0)
+                         (make-vect 0 1)))
+
+The implementation was directly inspired and influenced by the one in the
+JVM based Scheme implementation called JAKLD.
+
