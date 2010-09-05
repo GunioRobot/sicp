@@ -101,19 +101,35 @@
   (and (list? x) (= (op-expr x) '+)))
 
 (defn addend [s]
-  (first-expr s))
+  (let [a (first-expr s)]
+    (if (and (list? a)
+             (= (count a) 1))
+      (first a)
+      a)))
 
 (defn augend [s]
-  (rest-expr s))
+  (let [a (rest-expr s)]
+    (if (and (list? a)
+             (= (count a) 1))
+      (first a)
+      a)))
 
 (defn product? [x]
   (= (second x) '*))
 
 (defn multiplier [p]
-  (first p))
+  (let [m (first p)]
+    (if (and (list? m)
+             (= (count m) 1))
+      (first m)
+      m)))
 
 (defn multiplicand [p]
-  (rest (rest p)))
+  (let [m (rest (rest p))]
+    (if (and (list? m)
+             (= (count m) 1))
+      (first m)
+      m)))
 
 (defn make-exponentiation [b n]
   (cond (=number? b 1) 1
