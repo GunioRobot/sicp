@@ -10,7 +10,8 @@
     (= x y)))
 
 (defn equal? [a b]
-  (cond (empty? a) (empty? b)
+  (cond (and (atom? a) (atom? b)) (eq? a b)
+        (and (not (atom? a)) (not (atom? b))) (and (empty? a) (empty? b)) 
         (atom? (first a))
         (if (eq? (first a) (first b))
           (equal? (rest a) (rest b))
