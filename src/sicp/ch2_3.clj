@@ -1,5 +1,6 @@
 (ns sicp.ch2_3
-  (:use [sicp.utils :only (error)]))
+  (:use [sicp.utils :only (error)]
+        [sicp.ex2_54 :only (equal?)]))
 
 (defn memq [item x]
   (cond
@@ -65,3 +66,41 @@
 (defn multiplicand [p]
   (second (rest p)))
 
+;;;; 2.3.3 sets
+(defn element-of-set? [x set]
+  (cond (empty? set) false
+        (equal? x (first set)) true
+        :else (element-of-set? x (rest set))))
+
+;; add an element to the set, if not already part of the set and return the set. If
+;; already part of the set, then return the set
+(defn adjoin-set [x set]
+  (if (element-of-set? x set)
+    set
+    (cons x set)))
+
+;; intersection of two sets (i.e. elements of the set which are present in both the
+;; sets)
+(defn intersection-set [set1 set2]
+  (cond (or (empty? set1) (empty? set2)) ()
+        (element-of-set? (first set1) set2) (cons (first set1)
+                                                  (intersection-set (rest set1) set2))
+        :else (intersection-set (rest set1) set2)))
+
+
+;;; sets as ordered list
+(defn element-of-set? [x set]
+  (cond (empty? set) false
+        (= (first set) x) true
+        (< x (first set)) false
+        :else (element-of-set? x (rest set))))
+
+(defn intersection-set [set1 set2]
+  (if (or (empty? set1) (empty? set2))
+    ()
+    (let [x1 (first set1)
+          x2 (first set2)]
+      (cond (= x1 x2) (cons x1 (intersection-set (rest set1)
+                                                 (rest set2)))
+            (< x1 x2) (intersection-set (rest set1) set2)
+            (< x2 x1) (intersection-set (rest set2) set1)))))
