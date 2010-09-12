@@ -104,3 +104,35 @@
                                                  (rest set2)))
             (< x1 x2) (intersection-set (rest set1) set2)
             (< x2 x1) (intersection-set (rest set2) set1)))))
+
+;;; sets as trees
+;;; trees using lists
+;;;  every node is a list of 3 elements: entry, left tree and right tree
+(defn entry [tree]
+  (first tree))
+
+(defn left-branch [tree]
+  (second tree))
+
+(defn right-branch [tree]
+  (second (rest tree)))
+
+(defn make-tree [entry left right]
+  (list entry left right))
+
+(defn element-of-set? [x set]
+  (cond (empty? set) false
+        (= (entry set) x) true
+        (< x (entry set)) (element-of-set? x (left-branch set))
+        (> x (entry set)) (element-of-set? x (right-branch set))))
+
+(defn adjoin-set [x set]
+  (cond (empty? set) (make-tree x '() '())
+        (= x (entry set)) set
+        (< x (entry set)) (make-tree (entry set)
+                                     (adjoin-set x (left-branch set))
+                                     (right-branch set))
+        (> x (entry set)) (make-tree (entry set)
+                                     (left-branch set)
+                                     (adjoin-set x (right-branch set)))))
+
