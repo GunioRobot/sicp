@@ -136,3 +136,9 @@
                                      (left-branch set)
                                      (adjoin-set x (right-branch set)))))
 
+
+;;; key lookup
+(defn lookup [given-key set-of-records]
+  (cond (empty? set-of-records) false
+        (equal? given-key (key (first set-of-records))) (first set-of-records)
+        :else (lookup given-key (rest set-of-records))))
