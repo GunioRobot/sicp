@@ -40,4 +40,5 @@
                        sample-tree) 
                sample-tree) 
        sample-message)
-  
+
+(provide encode)
