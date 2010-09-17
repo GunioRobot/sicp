@@ -2,6 +2,28 @@
 
 (require (planet soegaard/sicp:2:1/sicp))
 
+;; count-leaves
+(define (count-leaves x)
+  (cond 
+    [(null? x) 0]
+    [(not (pair? x)) 1]
+    [else (+ (count-leaves (first x))
+             (count-leaves (rest x)))]))
+
+;; scale tree
+(define (scale-tree tree factor)
+  (cond [(null? tree) '()]
+        [(not (pair? tree)) (* tree factor)]
+        [else (cons (scale-tree (first tree) factor)
+                    (scale-tree (rest tree) factor))]))
+
+(define (scale-tree-map tree factor)
+  (map (lambda (x)
+         (if (not (pair? x))
+             (* x factor)
+             (scale-tree-map x factor)))
+       tree))
+
 (define (square-of-four tl tr bl br)
   (lambda (painter)
     (let ((top (beside (tl painter) (tr painter)))
