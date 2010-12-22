@@ -1,4 +1,4 @@
-#lang racket
+#lang racket/load
 
 (require "utils.rkt")
 

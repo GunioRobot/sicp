@@ -10,12 +10,13 @@
 (define (matrix-*-vector m v)
   (map (lambda (r) (dot-product r v)) m))
 
-;; (matrix-*-vector '((1 2 3 4) (4 5 6 6) (6 7 8 9)) '(1 2 3 4))
+(matrix-*-vector '((1 2 3 4) (4 5 6 6) (6 7 8 9)) '(1 2 3 4))
 
 (define (transpose m)
   (accumulate-n cons '() m))
 
 ;; (transpose '((1 2 3) (4 5 6) (7 8 9)))
+
 
 (define (matrix-*-matrix m n)
   (let ([cols (transpose n)])
