@@ -81,3 +81,26 @@
 97
 > 
 |#
+
+#|
+> (define t (list '*table*
+                  (list 'math
+                        (cons '+ 43)
+                        (cons '- 45)
+                        (cons '* 42))
+                  (list 'letters
+                        (cons 'a 97)
+                        (cons 'b 98))))
+> (display t)
+(*table* (math (+ . 43) (- . 45) (* . 42)) (letters (a . 97) (b . 98)))
+> (insert-in! '(earth asia india) 'delhi t)
+> (display t)
+(*table* (earth (asia (india . delhi))) (math (+ . 43) (- . 45) (* . 42)) (letters (a . 97) (b . 98)))
+> (insert-in! '(math +) 83 t)
+> (display t)
+(*table* (earth (asia (india . delhi))) (math (+ . 83) (- . 45) (* . 42)) (letters (a . 97) (b . 98)))
+> (insert-in! '(math /) 99 t)
+> (display t)
+(*table* (earth (asia (india . delhi))) (math (+ . 83) (/ . 99) (- . 45) (* . 42)) (letters (a . 97) (b . 98)))
+> 
+|#
