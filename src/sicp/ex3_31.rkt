@@ -16,6 +16,10 @@ Let us take half adder example:
     (and-gate d e s)
     'ok))
 
+The gate procedures like inverter and or-gate calls add-action! which
+is the procedure which adds the gate operation to the agenda. If it
+is not called once, then the operation is not added into the agenda.
+
 If accept-action-proc! is defined without the call to proc, i.e.
 
 (define (accept-action-proc! proc)
