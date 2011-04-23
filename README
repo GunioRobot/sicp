@@ -1,7 +1,7 @@
 This is the repository for SICP examples, exercises and problem sets. To
 use these programs, add the parent directory of this repo to your classpath.
 
-See: <http://www.zerobeat.in/2010/03/14/sicp-study/>
+See: <http://rkrishnan.org/2010/03/14/sicp-study/>
 for background and other information.
 
 * A note on section 2.2.4
