@@ -2,13 +2,45 @@
 
 #|
 
-Deposits and Withdrawals are fine. But when it comes to exchange, we need a
-"mutually serialized" procedure with something like this:
+(define (exchange account1 account2)
+  (let ((difference (- (account1 'balance)
+                       (account2 'balance))))
+    ((account1 'withdraw) difference)
+    ((account2 'deposit) difference)))
 
- (serializer-1 (serializer-2 exchange))
+(define (serialized-exchange account1 account2)
+  (let ((serializer1 (account1 'serializer))
+        (serializer2 (account2 'serializer)))
+    ((serializer1 (serializer2 exchange))
+     account1
+     account2)))
 
-Otherwise, we are creating a "time hole" when another execution process can
-get hold of one of the account and deposit/withdraw from it which will make
-the end result of exchange erroneous.
+(define (make-account-and-serializer balance)
+  (define (withdraw amount)
+    (if (>= balance amount)
+        (begin (set! balance (- balance amount))
+               balance)
+        "Insufficient funds"))
+  (define (deposit amount)
+    (set! balance (+ balance amount))
+    balance)
+  (let ((balance-serializer (make-serializer)))
+    (define (dispatch m)
+      (cond ((eq? m 'withdraw) (balance-serializer withdraw))
+            ((eq? m 'deposit) (balance-serializer deposit))
+            ((eq? m 'balance) balance)
+            ((eq? m 'serializer) balance-serializer)
+            (else (error "Unknown request -- MAKE-ACCOUNT"
+                         m))))
+    dispatch))
+
+Now let us see what happens when we call (serialized-exchange a1 a2)
+We invoke the procedure exchange serialized by the two serializers
+
+ ((s1 (s2 exchange)) a1 a2)
+
+Now, exchange will in turn, call serialized withdraw and deposit but
+it cannot do that because we are already calling a serialized procedure
+and so it will lock up waiting for the serializer.
 
 |#
