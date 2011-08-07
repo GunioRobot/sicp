@@ -1,5 +1,7 @@
 #lang planet neil/sicp
 
+(#%require (only racket random))
+
 (define (stream-car s) (car s))
 (define (stream-cdr s) (force (cdr s)))
 
