@@ -1,5 +1,8 @@
 #lang racket
 
+(require "ex4_8.rkt" ;; for let and named let
+         "ex4_7.rkt")
+
 ;; metacircular evaluator
 (define (eval exp env)
   (cond ((self-evaluating? exp) exp)
@@ -14,6 +17,8 @@
                          env))
         ((begin? exp) (eval-sequence (begin-actions exp) env))
         ((cond? exp) (eval (cond->if exp) env))
+        ((let? exp) (eval (let->combination exp) env))  ;; from ex4.8
+        ((let*? exp) (eval (let*->nested-lets exp) env)) ;; from ex4_7
         ((application? exp)
          (apply (eval (operator exp) env)
                 (list-of-values (operands exp) env)))
