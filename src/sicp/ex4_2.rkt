@@ -3,7 +3,7 @@
 #|
 
 a. application? only checks whether the given expression is a pair. It assumes that the rest of
-   the built in language clauses are already handled. So this will upset all other classes like
+   the built in language clauses are already handled. So this will upset all other clauses like
    define, let where Louis's eval would think define is a procedure and would proceed to evaluate
    the operands, which is wrong.
 
