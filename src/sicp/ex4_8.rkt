@@ -1,6 +1,6 @@
 #lang racket
 
-(provide let->combination)
+(provide let->combination let?)
 
 (define (tagged-list? exp tag)
   (if (pair? exp)

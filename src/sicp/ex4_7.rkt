@@ -1,5 +1,7 @@
 #lang racket
 
+(provide let*? let*->nested-lets)
+
 (define (tagged-list? exp tag)
   (if (pair? exp)
       (eq? (car exp) tag)
