@@ -1,6 +1,6 @@
-#lang racket
+#lang planet neil/sicp
 
-(require "ex4_8.rkt" ;; for let and named let
+(#%require "ex4_8.rkt" ;; for let and named let
          "ex4_7.rkt")
 
 ;; metacircular evaluator
@@ -24,6 +24,9 @@
                 (list-of-values (operands exp) env)))
         (else
          (error "unknown expression type -- EVAL" exp))))
+
+;; capture the underlying apply before redefining it
+(define apply-in-underlying-scheme apply)
 
 (define (apply procedure arguments)
   (cond ((primitive-procedure? procedure)
@@ -146,7 +149,7 @@
 (define (begin-actions exp) (cdr exp))
 (define (last-exp? seq) (null? (cdr seq)))
 (define (first-exp seq) (car seq))
-(define (rest-exp seq) (cdr seq))
+(define (rest-exps seq) (cdr seq))
 
 (define (sequence->exp seq)
   (cond ((null? seq) seq)
@@ -202,7 +205,7 @@
 
 (define (procedure-parameters p) (cadr p))
 (define (procedure-body p) (caddr p))
-(define (procedure-env p) (cadddr p))
+(define (procedure-environment p) (cadddr p))
 
 ;; operations on environment
 (define (enclosing-environment env) (cdr env))
@@ -266,4 +269,45 @@
             [else (scan (cdr vars) (cdr vals))]))
     (scan (frame-variables frame)
           (frame-values frame))))
+
+
+;; primitive procedures
+(define (primitive-procedure? proc)
+  (tagged-list? proc 'primitive))
+
+(define (primitive-implementation proc) (cadr proc))
+
+(define primitive-procedures
+  (list (list 'car car)
+        (list 'cdr cdr)
+        (list 'cons cons)
+        (list 'null? null?)
+        (list '+ +)
+        (list '- -)
+        (list '= =)))
+
+(define (primitive-procedure-names)
+  (map car primitive-procedures))
+
+(define (primitive-procedure-objects)
+  (map (lambda (proc) (list 'primitive (cadr proc)))
+       primitive-procedures))
+
+;; apply from implementation language
+(define (apply-primitive-procedure proc args)
+  (apply-in-underlying-scheme
+   (primitive-implementation proc) args))
+
+;; setting up the environment
+(define (setup-environment)
+  (let ((initial-env
+         (extend-environment (primitive-procedure-names)
+                             (primitive-procedure-objects)
+                             the-empty-environment)))
+    (define-variable! 'true #t initial-env)
+    (define-variable! 'false #f initial-env)
+    initial-env))
+
+(define the-global-environment (setup-environment))
+
 
