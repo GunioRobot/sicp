@@ -14,8 +14,8 @@
                        WAH YIP YIP YIP YIP YIP YIP YIP YIP YIP
                        SHA BOOM))
 
-(check = 
-       (length (encode test-message 
+(check =
+       (length (encode test-message
                        huffman-tree))
        84)
 

@@ -4,7 +4,7 @@
 
 ;; horner's rule. Extensively used in signal processing world
 ;; Assume that the coefficients of the polynomial are arranged
-;; in a sequence, from a0 through an. 
+;; in a sequence, from a0 through an.
 (defn horner-eval [x coeff-seq]
   (accumulate (fn [this-coeff higher-terms]
                 (+ this-coeff

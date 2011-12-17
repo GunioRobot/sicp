@@ -1,35 +1,35 @@
 #lang racket
 
 ;; get a list of coercions (t1->t t2->2 .... tn->t)
-;; if a type coercion does not exist, the 
+;; if a type coercion does not exist, the
 ;; particular index will have #f
 (define (get-coercions type types)
-  (map (lambda (t) 
+  (map (lambda (t)
          (if (eq? t type)
              (lambda (x) x)
              (get-coercion t type)))
        types))
 
 (define (all-valid? coercions)
-  (cond 
+  (cond
     ((null? coercions) #t)
     ((car coercions) (all-valid? (cdr coercions)))
     (else #f)))
-      
+
 (define (get-all-type-coercions types)
-  (map (lambda (t) 
+  (map (lambda (t)
          (get-coercions t types))
        types))
-                                  
+
 (define (apply-generic op . args)
   (define (apply-generic-2 type-coercion-list)
-    (cond 
+    (cond
       ((null? type-coercion-list) (error "cannot find a suitable type coercion"))
       ((all-valid? (car type-coercion-list))
        (let ((coerced-args (map (lambda (t a) (t a)) (car type-coercion-list) args)))
          (apply-generic-1 coerced-args)))
       (else (apply-generic-2 (cdr type-coercion-list)))))
-       
+
   (define (apply-generic-1 args)
     (let ((type-tags (map type-tag args)))
       (let ((proc (get op type-tags)))
@@ -37,7 +37,7 @@
             (apply proc (map contents args))
             (let ((tn->t1 (get-all-type-coercions types)))
               (apply-generic-2 tn->t1))))))
-  
+
   (apply-generic-1 args))
 
 #|

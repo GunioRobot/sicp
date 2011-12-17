@@ -16,7 +16,7 @@
                 ((eq? m 'deposit) (lambda (amt) (deposit amt)))
                 (else (error "Unknown request -- MAKE-ACCOUNT"
                              m)))
-          (lambda (temp) 
+          (lambda (temp)
             (begin
               (set! bad-password-count (+ bad-password-count 1))
               (if (>= bad-password-count 7)
@@ -43,6 +43,6 @@
 "Incorrect password"
 > ((acc 'some-other-password 'deposit) 50)
 "Something is wrong. Calling 911..."
-> 
+>
 
 |#

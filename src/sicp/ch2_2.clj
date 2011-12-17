@@ -232,7 +232,7 @@
            (first (rest pair)))))
 
 (defn prime-sum-pairs [n]
-  (map make-pair-sum 
+  (map make-pair-sum
        (filter prime-sum?
                (flatmap (fn [i]
                           (map (fn [j] (list i j))

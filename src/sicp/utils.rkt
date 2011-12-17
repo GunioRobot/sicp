@@ -15,13 +15,13 @@
 
 ;; naive fibonacci definition
 (define (fib n)
-  (cond 
+  (cond
     ((or (= n 0) (= n 1)) 1)
     (else (+ (fib (- n 1))
              (fib (- n 2))))))
 
 (define (range low high (step 1))
-  (cond 
+  (cond
     ((or (and (< low high)
               (positive? step))
          (and (> low high)
@@ -35,4 +35,4 @@
       (op (car coll)
           (accumulate op initial (cdr coll)))))
 
-(provide square fib range accumulate)    
+(provide square fib range accumulate)

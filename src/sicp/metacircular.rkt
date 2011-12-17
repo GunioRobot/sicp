@@ -53,7 +53,7 @@
       (eval (if-alternative exp) env)))
 
 (define (eval-sequence exps env)
-  (cond ((last-exp? exps) 
+  (cond ((last-exp? exps)
          (eval (first-exp exps) env))
         (else
          (eval (first-exp exps) env)
@@ -136,7 +136,7 @@
 (define (if? exp) (tagged-list? exp 'if))
 (define (if-predicate expr) (car (cdr expr)))
 (define (if-consequent expr) (car (cdr (cdr expr))))
-(define (if-alternative expr) 
+(define (if-alternative expr)
   (if (not (null? (cdr (cdr (cdr expr)))))
       (car (cdr (cdr (cdr expr))))
       'false))

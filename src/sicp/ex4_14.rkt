@@ -37,7 +37,7 @@ Let us say that we have added `map' as a primitive procedure. It is represented 
 '(1 3)
 > (apply (primitive-implementation (list 'primitive map)) (list 'primitive car) '(((1 2 3) (3 4 5))))
 map: expects type <procedure> as 1st argument, given: '(primitive #<procedure:car>); other arguments were: '((1 2 3) (3 4 5))
-> 
+>
 
 If we apply primitive procedures to our primitive map, it fails because it cannot understand our primitive representation.
 In general, all primitive versions of higher order functions fail when passes a primitive procedure.

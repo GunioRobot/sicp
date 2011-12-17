@@ -7,7 +7,7 @@
         #f)))
 
 (define (assoc key records)
-  (cond 
+  (cond
     ((null? records) #f)
     ((equal? key (car (car records))) (car records))
     (else (assoc key (cdr records)))))

@@ -12,5 +12,5 @@
                      (if (zproc c)
                          (terms-=zero? (rest-terms terms))
                          #f)))))))
-       
+
        (terms-=zero? (term-list p))))

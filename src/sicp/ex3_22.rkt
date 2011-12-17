@@ -31,8 +31,8 @@
              (set-front-ptr! queue (cdr front-ptr))
              front-ptr)))
     (define (dispatch m)
-      (cond 
-        ((eq? m 'insert-queue!) 
+      (cond
+        ((eq? m 'insert-queue!)
          (lambda (queue item)
            (insert-queue! queue item)))
         ((eq? m 'delete-queue!)

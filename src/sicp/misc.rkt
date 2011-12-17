@@ -7,7 +7,7 @@
                 (map1 f (rest list)))]))
 
 (define (mymap f lists)
-  (cond 
+  (cond
     [(empty? (first lists)) '()]
     [else (cons (apply f (map1 first lists))
                 (mymap f (map1 rest lists)))]))
@@ -41,14 +41,14 @@
     [(not (pair? tree)) (* tree tree)]
     [else (cons (square-tree2 (car tree))
                 (square-tree2 (cdr tree)))]))
-                              
+
 (define (fringe1 tree)
   (map (lambda (subtree)
          (if (not (pair? subtree))
              subtree
              (fringe1 subtree)))
        tree))
-       
+
 
 (define (tree-map f tree)
   (map (lambda (subtree)

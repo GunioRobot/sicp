@@ -5,7 +5,7 @@
 ;; approximating tangent using lambert's cont fract
 ;; if you look at the formula, -xtan (x) = -x^2/(1-(x^2/3-x^2/5-.... ))
 (defn tan-approximation [x len]
-  (* (/ -1.0 x) 
+  (* (/ -1.0 x)
      (cont-frac (fn [k] (* -1.0 (square x)))
 		(fn [k] (- (* 2 k) 1))
 		len)))
@@ -26,5 +26,5 @@ user> (Math/tan Math/PI)
 user> (Math/tan (/ Math/PI 2.0))
 1.633123935319537E16
 user> (tan-approximation (/ Math/PI 2) 20)
-; Evaluation aborted.  
+; Evaluation aborted.
 )

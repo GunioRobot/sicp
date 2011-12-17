@@ -41,7 +41,7 @@
 
 (define (front-insert-deque! deque item)
   (let ((new-pair (make-cell item)))
-    (cond 
+    (cond
       ((empty-deque? deque)
        (set-front-ptr! deque new-pair)
        (set-rear-ptr! deque new-pair)
@@ -74,7 +74,7 @@
     (else
      (set-front-ptr! deque (car (cdr (front-ptr deque))))
      deque)))
-     
+
 (define (rear-delete-deque! deque)
   (cond
     ((empty-deque? deque)
@@ -83,7 +83,7 @@
      (set-rear-ptr! deque (prev-cell (rear-ptr deque)))
      (set-next! (rear-ptr deque) '())
      deque)))
-     
+
 
 (define (print-deque queue)
   (define (copy-queue q1)
@@ -109,7 +109,7 @@
  #0=(mcons 'c (mcons #1=(mcons 'b (mcons #2=(mcons 'a (mcons '() #1#)) #0#)) '()))
  #2#)
 > (print-deque q)
-c b a 
+c b a
 > q
 (mcons
  #0=(mcons 'c (mcons #1=(mcons 'b (mcons #2=(mcons 'a (mcons '() #1#)) #0#)) '()))
@@ -117,13 +117,13 @@ c b a
 > (rear-delete-deque! q)
 (mcons #0=(mcons 'c (mcons #1=(mcons 'b (mcons '() #0#)) '())) #1#)
 > (print-deque q)
-c b 
+c b
 > (rear-insert-deque! q 'd)
 (mcons
  #0=(mcons 'c (mcons #1=(mcons 'b (mcons #2=(mcons 'd (mcons '() #1#)) #0#)) '()))
  #2#)
 > (print-deque q)
-c b d 
+c b d
 > (front-insert-deque! q 'e)
 (mcons
  #0=(mcons
@@ -135,7 +135,7 @@ c b d
       '()))
  #3#)
 > (print-deque q)
-e c b d 
+e c b d
 > (front-delete-deque! q)
 (mcons
  #0=(mcons
@@ -145,6 +145,6 @@ e c b d
       (mcons 'e (mcons #0# '()))))
  #2#)
 > (print-deque q)
-c b d 
-> 
+c b d
+>
 |#

@@ -2,7 +2,7 @@
 
 #|
 
-There will be an extra frame because of the `let' statements. 
+There will be an extra frame because of the `let' statements.
 
 The lambdas are evaluated only when called. So, if we put all the definitions on the top
 before the statements which actually use them, then we already have 'sumultaneous scope'

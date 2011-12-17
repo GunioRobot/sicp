@@ -11,8 +11,8 @@
 ;; install in integer
 (put 'raise '(rational)
      (lambda (x) (integer->rational x)))
-         
-(define (integer->real x) 
+
+(define (integer->real x)
   (* x 1.0))
 
 (define (rational->real r)

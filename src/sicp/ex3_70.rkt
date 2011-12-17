@@ -9,7 +9,7 @@
            (let ((w1 (weightfn (car p1car) (car (cdr p1car))))
                  (w2 (weightfn (car p2car) (car (cdr p2car)))))
              (cond ((< w1 w2)
-                    (cons-stream p1car 
+                    (cons-stream p1car
                                  (merge-weighted (stream-cdr p1) p2 weightfn)))
                    ((> w1 w2)
                     (cons-stream p2car
@@ -108,9 +108,9 @@
 ;; part 2.
 
 
-(display-stream (stream-filter (lambda (p) 
-                                 (let ((i (car p)) 
-                                       (j (car (cdr p)))) 
+(display-stream (stream-filter (lambda (p)
+                                 (let ((i (car p))
+                                       (j (car (cdr p))))
                                    (not (or (divides? 2 i)
                                             (divides? 2 j)
                                             (divides? 3 i)

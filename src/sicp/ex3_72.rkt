@@ -9,7 +9,7 @@
 (define (square-sum i j)
   (+ (* i i) (* j j)))
 
-(display-stream (stream-triplicates (stream-map (lambda (p) 
+(display-stream (stream-triplicates (stream-map (lambda (p)
                                                   (square-sum (car p) (car (cdr p))))
                                                 (weighted-pairs integers integers square-sum))))
 

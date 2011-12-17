@@ -9,7 +9,7 @@
 
 (define memo-fib
   (memoize (lambda (n)
-             (cond 
+             (cond
                ((= n 0) 0)
                ((= n 1) 1)
                (else (+ (memo-fib (- n 1))
@@ -24,7 +24,7 @@
             (let ((result (f x)))
               (insert! x result previous-output)
               result))))))
-          
+
 #|
 
 If we define memo-fib as

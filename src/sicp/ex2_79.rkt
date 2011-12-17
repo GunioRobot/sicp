@@ -27,4 +27,3 @@
          (= (imag-part z1) (imag-part z2))))
   (put 'equ? '(complex complex) equ?)
   'done)
-  

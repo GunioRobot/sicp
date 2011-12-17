@@ -66,7 +66,7 @@
 
 #|
 
-What is the value of sum after each of the above expressions is evaluated? 
+What is the value of sum after each of the above expressions is evaluated?
 
 ANS:
 
@@ -184,7 +184,7 @@ y is
 
 z is
 
-(10 15 45 55 95 105 120 190 210) 
+(10 15 45 55 95 105 120 190 210)
 
 sum is 210
 

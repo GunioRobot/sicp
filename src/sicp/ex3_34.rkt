@@ -23,6 +23,6 @@ output of a repl session:
 
 Probe: squarer output = 400
 'done
-> 
+>
 
 |#

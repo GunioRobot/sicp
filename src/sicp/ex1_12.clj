@@ -13,7 +13,7 @@
 ;;                 The numbers at the edge of the triangle are all 1, and each
 ;;                 number inside the triangle is the sum of the two numbers above
 ;;                 it. Write a procedure that computes elements of Pascal's triangle
-;;                 by means of a recursive process. 
+;;                 by means of a recursive process.
 (defn pascal [row col]
   (when (<= col row)
     (if (or (= col 0) (= row col))

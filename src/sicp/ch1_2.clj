@@ -11,7 +11,7 @@
 
 ;; stack friendly version
 (defn factorial2 [n]
-  (loop [x n acc 1] 
+  (loop [x n acc 1]
     (if (= x 1)
       acc
       (recur (- x 1) (* acc x)))))

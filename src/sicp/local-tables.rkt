@@ -5,11 +5,11 @@
 (define (make-table)
   (let ((local-table (list '*table*)))
     (define (assoc key records)
-      (cond 
+      (cond
         ((null? records) #f)
         ((equal? key (car (car records))) (car records))
         (else (assoc key (cdr records)))))
-    
+
     (define (lookup key-1 key-2)
       (let ((subtable (assoc key-1 (cdr local-table))))
         (if subtable
@@ -27,7 +27,7 @@
                   (set-cdr! subtable
                             (cons (cons key-2 value)
                                   (cdr subtable)))))
-            (set-cdr! local-table 
+            (set-cdr! local-table
                       (cons (list key-1
                                   (cons key-2 value))
                             (cdr local-table)))))

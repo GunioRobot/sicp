@@ -2,9 +2,9 @@
 
 #|
 
-We do (n - 1) additions for the memo-proc based delay implementation. 
+We do (n - 1) additions for the memo-proc based delay implementation.
 
-With the simple delay implementation, for a given n, it constructs the 
+With the simple delay implementation, for a given n, it constructs the
 fib sequence:
 
  fib (n) = fib (n-1) + fib (n-2)

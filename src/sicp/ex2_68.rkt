@@ -21,8 +21,8 @@
               (encode (cdr message) tree))))
 
 (define (encode-symbol symbol tree)
-  (cond 
-    [(and (leaf? tree) 
+  (cond
+    [(and (leaf? tree)
           (eqv? (symbol-leaf tree) symbol)) '()]
     [(member? symbol (symbols (left-branch tree))) (cons 0 (encode-symbol symbol (left-branch tree)))]
     [(member? symbol (symbols (right-branch tree))) (cons 1 (encode-symbol symbol (right-branch tree)))]
@@ -35,10 +35,10 @@
     [else (member? x (cdr set))]))
 
 ;;; a simple test. encode-decode should give me back the same symbols.
-(check equal? 
-       (decode (encode sample-message 
-                       sample-tree) 
-               sample-tree) 
+(check equal?
+       (decode (encode sample-message
+                       sample-tree)
+               sample-tree)
        sample-message)
 
 (provide encode)

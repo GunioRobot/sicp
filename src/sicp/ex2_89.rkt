@@ -1,6 +1,6 @@
 #lang racket
 
-(define (adjoin-term term term-list) 
+(define (adjoin-term term term-list)
   (cons (coeff term) term-list))
 
 (define (the-empty-termlist) '())

@@ -48,7 +48,7 @@
     (cond
       [(empty? defs) '()]
       [else (cons (caddr (car defs)) (internal-definition-values (cdr defs)))]))
-  
+
   ;; assumes that definitions come first in the body
   (letrec ([get-body-internal (lambda (b)
                                 (cond
@@ -75,7 +75,7 @@
                         [(empty? names) '()]
                         [else (cons (list 'set! (car names) (car vals))
                                     (s (cdr names) (cdr vals)))]))])
-          (cons 'let 
+          (cons 'let
                 (cons (p def-names)
                       (append (s def-names def-vals)
                               internal-body))))))))

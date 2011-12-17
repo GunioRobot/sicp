@@ -6,7 +6,7 @@
 
 (defn nthroot [x n]
   (fixed-point ((repeated average-damp
-			  (int (/ (Math/log n) (Math/log 2)))) 
+			  (int (/ (Math/log n) (Math/log 2))))
 		(fn [y] (/ x (Math/pow y (- n 1)))))
 	       1.0))
 
@@ -56,5 +56,5 @@ user> (nthroot (Math/pow 3 35) 35)
 ;;=> 3.000000146591681
 user> (nthroot (Math/pow 3 50) 50)
 ;;=> 2.9999967255008917
-user>   
+user>
 )

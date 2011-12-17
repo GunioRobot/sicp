@@ -14,7 +14,7 @@ c. Mary withdraws half of balance.
 
 100 + 10 - 20 = 90 -> 90/2 -> $45
 
-2. 
+2.
 
 a. Peter deposits $10
 b. Mary withdraws half of balance.
@@ -30,7 +30,7 @@ c. Mary withdraws half of balance.
 
 100 - 20 + 10 -> 110 /2 -> $55
 
-4. 
+4.
 
 a. Paul withdraws $20
 b. Mary withdraws half of balance.

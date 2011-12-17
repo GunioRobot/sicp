@@ -75,13 +75,13 @@
                                (cadr pair))
                     (make-leaf-set (cdr pairs))))))
 
-(provide make-code-tree 
-         make-leaf 
-         decode 
-         leaf? 
-         symbol-leaf 
-         left-branch 
-         right-branch 
-         symbols 
-         make-leaf-set 
+(provide make-code-tree
+         make-leaf
+         decode
+         leaf?
+         symbol-leaf
+         left-branch
+         right-branch
+         symbols
+         make-leaf-set
          adjoin-set)

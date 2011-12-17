@@ -7,7 +7,7 @@
 
 (define (type expr) (car expr))
 
-(put 'quote 
+(put 'quote
      (lambda (expr env)
        (text-of-quotation expr)))
 
@@ -17,4 +17,4 @@
 
 
 
-     
+

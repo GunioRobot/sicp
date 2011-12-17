@@ -62,7 +62,7 @@
 
 (defn make-exponentiation [b n]
   (cond (=number? b 1) 1
-        (=number? b 0) 0        
+        (=number? b 0) 0
         (=number? n 1) b
         (=number? n 0) 1
         (and (number? b) (number? n)) (Math/pow b n)

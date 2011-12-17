@@ -2,7 +2,7 @@
 
 (define (monte-carlo trials experiment)
   (define (iter trials-remaining trials-passed)
-    (cond 
+    (cond
       ((= trials-remaining 0) (/ trials-passed trials))
       ((experiment) (iter (- trials-remaining 1) (+ trials-passed 1)))
       (else (iter (- trials-remaining 1) trials-passed))))
@@ -29,7 +29,6 @@
       (P x y)))
   (define (rectangle-area x1 x2 y1 y2)
     (* (- x2 x1) (- y2 y1)))
-  
-  (* (monte-carlo trials in-region) 
+
+  (* (monte-carlo trials in-region)
      (rectangle-area x1 x2 y1 y2)))
-    

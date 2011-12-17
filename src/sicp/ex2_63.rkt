@@ -35,10 +35,10 @@
 
 (provide tree->list-1 tree->list-2)
 
-;; part b. 
+;; part b.
 #|
 for tree->list-1, it does a cons and an append at each step. append needs to be done
-for each element of the first list. In this case the first list initially will have 
+for each element of the first list. In this case the first list initially will have
 n/2 elements, then n/4 and so on. So, it has about O(logn) steps. Now, it also does
 a cons on each element, so overall it takes O(n Log n) steps.
 

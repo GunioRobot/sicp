@@ -21,11 +21,11 @@
     (forget-value! a2 me)
     (process-new-value))
   (define (me request)
-    (cond ((eq? request 'I-have-a-value)  
+    (cond ((eq? request 'I-have-a-value)
            (process-new-value))
-          ((eq? request 'I-lost-my-value) 
+          ((eq? request 'I-lost-my-value)
            (process-forget-value))
-          (else 
+          (else
            (error "Unknown request -- ADDER" request))))
   (connect a1 me)
   (connect a2 me)
@@ -120,7 +120,7 @@
           'ignored))
     (define (connect new-constraint)
       (when (not (memq new-constraint constraints))
-          (set! constraints 
+          (set! constraints
                 (cons new-constraint constraints)))
       (when (has-value? me)
           (inform-about-value new-constraint))

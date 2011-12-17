@@ -2,7 +2,7 @@
 
 (define (smooth stream)
   (cons-stream (/ (+ (stream-car stream)
-                     (stream-car (stream-cdr stream))) 
+                     (stream-car (stream-cdr stream)))
                   2.0)
                (smooth (stream-cdr stream))))
 
@@ -13,5 +13,4 @@
                         (stream-car input-stream))))
 
 (define zero-crossings (make-zero-crossings (smooth sense-data) 0))
-               
-               
+

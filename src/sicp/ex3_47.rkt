@@ -35,7 +35,7 @@
                    (mutex 'release)))]
             [(eq? s 'release)
              (mutex 'acquire)
-             (when (> cell 0)             
+             (when (> cell 0)
                (set! cell (- cell 1)))
              (mutex 'release)]))
     the-semaphore))
@@ -58,7 +58,7 @@
             [(eq? s 'release)
              (if (test-and-set! flag)
                  (the-semaphore 'acquire))
-             (when (> cell 0)             
+             (when (> cell 0)
                (set! cell (- cell 1)))
              (clear! flag)]))
     the-semaphore))

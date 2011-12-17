@@ -8,4 +8,4 @@
         (cond ((equal? given-key k) e)
               ((< k given-key) (lookup given-key (left-branch set-of-records)))
               ((> k given-key) (lookup given-key (right-branch set-of-records)))))))
-        
+

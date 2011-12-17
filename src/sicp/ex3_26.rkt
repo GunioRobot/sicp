@@ -58,11 +58,11 @@
   (cond
     ((null-entry? (entry-tree table)) (set-entry! table (make-entry k v)))
     ((= k (key (entry-tree table))) (set-value! (entry-tree table) v))
-    ((< k (key (entry-tree table))) 
+    ((< k (key (entry-tree table)))
      (if (null? (left-branch table))
          (set-left-branch! table (make-tree-node k v))
          (insert! k v (left-branch table))))
-    ((> k (key (entry-tree table))) 
+    ((> k (key (entry-tree table)))
      (if (null? (right-branch table))
          (set-right-branch! table (make-tree-node k v))
          (insert! k v (right-branch table)))))

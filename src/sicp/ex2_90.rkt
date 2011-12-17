@@ -2,7 +2,7 @@
 
 (define (install-dense-termlist-package)
   ;; internal procedures
-  (define (adjoin-term term term-list) 
+  (define (adjoin-term term term-list)
     (cons (coeff term) term-list))
   (define (first-term term-list)
     (let ((len (length term-list)))
@@ -11,18 +11,18 @@
   (define (the-empty-termlist) '())
   (define (empty-termlist? term-list) (null? term-list))
   ;; interface to the rest of the system
-  (define (tag x) (attach-tag 'dense x))  
+  (define (tag x) (attach-tag 'dense x))
   (put 'adjoin-term '(term dense)
        (lambda (term term-list)
          (tag (adjoin-term term term-list))))
   (put 'first-term '(dense) first-term)
-  (put 'rest-terms '(dense) 
-       (lambda (term-list) 
+  (put 'rest-terms '(dense)
+       (lambda (term-list)
          (tag (rest-terms term-list))))
   (put 'the-empty-termlist '(dense)
        (lambda ()
          (tag (the-empty-termlist))))
-  (put 'empty-termlist? '(dense) 
+  (put 'empty-termlist? '(dense)
        (lambda (tl)
          (empty-termlist? (contents tl))))
   'done)
@@ -35,22 +35,22 @@
         (cons (coeff term) term-list)))
   (define (first-term term-list) (car term-list))
   (define (rest-terms term-list) (cdr term-list))
-  (define (the-empty-termlist) '())  
+  (define (the-empty-termlist) '())
   (define (empty-termlist? term-list) (null? term-list))
-  
+
   ;; interface to the rest of the system
   (define (tag x) (attach-tag 'sparse x))
-  (put 'adjoin-term '(term sparse) 
-       (lambda (term term-list) 
+  (put 'adjoin-term '(term sparse)
+       (lambda (term term-list)
          (tag (adjoin-term term term-list))))
   (put 'first-term '(sparse) first-term)
-  (put 'rest-terms '(sparse) 
+  (put 'rest-terms '(sparse)
        (lambda (term-list)
          (tag (rest-terms term-list))))
   (put 'the-empty-termlist '(sparse)
        (lambda ()
          (tag (the-empty-termlist))))
-  (put 'empty-termlist? '(sparse) 
+  (put 'empty-termlist? '(sparse)
        (lambda (tl)
          (empty-termlist? (contents tl))))
   'done)
@@ -59,12 +59,12 @@
   (define (make-term order coeff) (list order coeff))
   (define (order term) (car term))
   (define (coeff term) (cadr term))
-  
+
   (define (tag x) (attach-tag 'term x))
   (put 'make-term '(scheme-number scheme-number)
        (lambda (o c)
          (tag (make-term o c))))
-  (put 'order '(term) 
+  (put 'order '(term)
        (lambda (t)
          (order (contents t))))
   (put 'coeff '(term)
@@ -89,7 +89,7 @@ by get'ing the right empty term list using:
 
  (get 'the-empty-termlist '(sparse))
 
-or 
+or
 
  (get 'the-empty-termlist '(dense))
 

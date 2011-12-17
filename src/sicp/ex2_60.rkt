@@ -5,10 +5,10 @@
         ((equal? x (car set)) #t)
         (else (element-of-set? x (cdr set)))))
 
-(define (adjoin-set x set) 
+(define (adjoin-set x set)
   (cons x set))
 
-(define (union-set set1 set2) 
+(define (union-set set1 set2)
   (append set1 set2))
 
 (define (intersection-set set1 set2)
@@ -17,14 +17,13 @@
         (else (intersection-set (cdr set1) set2))))
 
 #|
- union-set and adjoin-set has changed. Rest remain unchanged. 
+ union-set and adjoin-set has changed. Rest remain unchanged.
 
- Performance while adding a new element is O(1). Same with union. 
- intersection-set remains the same - O(m * n). 
+ Performance while adding a new element is O(1). Same with union.
+ intersection-set remains the same - O(m * n).
  element-of-set? also remains the same - O (n).
 
 If duplicates are allowed, then Intersection and element-of-set? performance will degrade.
 
 |#
 
-  

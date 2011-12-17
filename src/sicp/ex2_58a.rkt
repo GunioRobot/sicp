@@ -17,22 +17,22 @@
   (and (variable? x) (variable? y) (eq? x y)))
 
 ;; sum
-(define (make-sum x y) 
+(define (make-sum x y)
   (cond ((equal? x 0) y)
         ((equal? y 0) x)
         ((and (number? x) (number? y)) (+ x y))
         ((equal? x y) (make-product 2 x))
         (else (list x '+ y))))
 
-(define (make-product x y) 
+(define (make-product x y)
   (cond ((equal? x 1) y)
         ((equal? y 1) x)
         ((equal? x 0) 0)
         ((equal? y 0) 0)
         (else (list x '* y))))
 
-(define (sum? exp) 
-  (and (pair? exp) 
+(define (sum? exp)
+  (and (pair? exp)
        (eq? (car (cdr exp)) '+)))
 
 (define (product? exp)

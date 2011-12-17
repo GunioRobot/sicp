@@ -20,6 +20,6 @@
 
 (define (matrix-*-matrix m n)
   (let ([cols (transpose n)])
-    (map (lambda (v) (matrix-*-vector cols v)) m))) 
+    (map (lambda (v) (matrix-*-vector cols v)) m)))
 
 ;; (matrix-*-matrix '((0 -1 2) (4 11 2)) '((3 -1) (1 2) (6 1)))

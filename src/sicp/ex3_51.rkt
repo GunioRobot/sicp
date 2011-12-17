@@ -1,4 +1,4 @@
-#lang planet neil/sicp 
+#lang planet neil/sicp
 
 (define (stream-car s) (car s))
 (define (stream-cdr s) (force (cdr s)))
@@ -56,10 +56,10 @@ This will display 0. The reason is that, we can reduce this expression
 to
 
 (cons
-     (show (car 
+     (show (car
                 (cons 0 (delay (stream-enumerate-interval 1 10))))
      (delay
-           (stream-map show (stream-cdr 
+           (stream-map show (stream-cdr
                                        (cons 0 (delay (stream-enumerate-interval 1 10)))))))
 
 This will print 0 and the rest of the computation is delayed.
@@ -73,23 +73,23 @@ x is (cons 0
            (delay (stream-map show (stream-enumerate-interval 1 10))))
 
 Calling stream-cdr once, this expression becomes
- (cons 0 
+ (cons 0
        (cons-stream (show (stream-car (stream-enumerate-interval 1 10)))
-                    (stream-map show 
+                    (stream-map show
                                 (stream-cdr (stream-enumerate-interval 1 10)))))
 
-= 
+=
 
  (cons 0
        (cons 1 ;; also prints 1
-             (delay (stream-map show 
+             (delay (stream-map show
                                 (stream-cdr (stream-enumerata-interval 1 10))))))
 
 As can be seen, this will print 1 and the rest are 'delayed'.
 
 Think of the output of (stream-enumerate-interval 0 10) as:
 
-(cons 0 
+(cons 0
       (delay (cons 1
                    (delay (cons 2
                                 (delay (cons 3
@@ -109,8 +109,8 @@ This will first print 0, when defined.
 (stream-ref 5 x) is equiv to:
 
 (stream-car (stream-cdr (stream-cdr (stream-cdr (stream-cdr (stream-cdr x))))))
- 
-This will make the stream-map work on the 5 delayed computations and hence 
+
+This will make the stream-map work on the 5 delayed computations and hence
 numbers from 1 to 5 printed on the screen. Together will that, the value of
 (stream-ref s 5) == 5 will also be printed.
 

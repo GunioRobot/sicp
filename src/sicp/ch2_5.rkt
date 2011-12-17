@@ -11,4 +11,3 @@
     (attach-tag 'scheme-number x))
   (put 'add '(scheme-number scheme-number)
        (lambda (x y) (tag (+ x y))))
-  

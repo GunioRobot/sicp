@@ -6,7 +6,7 @@
   (let [f (fn [things answer]
 	    (if (empty? things)
 	      answer
-	      (recur (rest things) 
+	      (recur (rest things)
 		     (cons (square (first things))
 			   answer))))]
     (f items nil)))

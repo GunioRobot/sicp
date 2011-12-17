@@ -69,7 +69,7 @@
                         (= (first v1) v2))
         (list? v2) (and (variable? v1)
                         (variable? v2)
-                        (= v1 (first v2)))        
+                        (= v1 (first v2)))
         :else (and (variable? v1)
                    (variable? v2)
                    (= v1 v2))))
@@ -133,7 +133,7 @@
 
 (defn make-exponentiation [b n]
   (cond (=number? b 1) 1
-        (=number? b 0) 0        
+        (=number? b 0) 0
         (=number? n 1) b
         (=number? n 0) 1
         (and (number? b) (number? n)) (Math/pow b n)

@@ -22,7 +22,7 @@
 (define (assoc-in key-list records)
   (if (not (null? key-list))
       (if (not (null? (cdr key-list)))
-          (assoc-in (cdr key-list) 
+          (assoc-in (cdr key-list)
                     (assoc (car key-list) (cdr records)))
           (assoc (car key-list) (cdr records)))
       #f))
@@ -34,7 +34,7 @@
         #f)))
 
 (define (form-table keys value)
-  (cond 
+  (cond
     ((null? (cdr keys)) (cons (car keys) value))
     (else (list (car keys)
                 (form-table (cdr keys) value)))))
@@ -49,17 +49,17 @@
               (set-cdr! record value)
               (loop (car ks) (cdr ks) (cdr record)))
           (if (null? ks)
-              (set-cdr! table 
+              (set-cdr! table
                         (cons (cons k value)
                               (cdr table)))
-              (set-cdr! records 
+              (set-cdr! records
                         (cons (list k
                                     (form-table ks value))
                               (cdr records))))))))
-                          
-        
-          
-        
+
+
+
+
 
 #|
 > (define t (list '*table*
@@ -70,7 +70,7 @@
                   (list 'letters
                         (cons 'a 97)
                         (cons 'b 98))))
-                         
+
 > (lookup-in '(math +) t)
 43
 > (lookup-in '(math /) t)
@@ -79,7 +79,7 @@
 #f
 > (lookup-in '(letters a) t)
 97
-> 
+>
 |#
 
 #|
@@ -102,5 +102,5 @@
 > (insert-in! '(math /) 99 t)
 > (display t)
 (*table* (earth (asia (india . delhi))) (math (+ . 83) (/ . 99) (- . 45) (* . 42)) (letters (a . 97) (b . 98)))
-> 
+>
 |#

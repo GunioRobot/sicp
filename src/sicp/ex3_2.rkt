@@ -3,9 +3,9 @@
 (define (make-monitored f)
   (let ((num-calls 0))
     (lambda (x)
-      (cond 
+      (cond
         ((eq? x 'how-many-calls?) num-calls)
-        (else 
+        (else
          (begin
            (set! num-calls (+ num-calls 1))
            (f x)))))))
@@ -25,5 +25,5 @@
 10000
 > (mf 'how-many-calls?)
 2
-> 
+>
 |#

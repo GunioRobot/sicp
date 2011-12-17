@@ -19,7 +19,7 @@
 
 (define (let*->let bindings body)
   (cond [(empty? bindings) '()]
-        [else 
+        [else
          (let ([binding (car bindings)]
                [rest-bindings (cdr bindings)])
            (if (empty? rest-bindings)
@@ -48,7 +48,7 @@
 
 It is enough to add an action for let* expression in eval, as eval
 gets recursively called for the transformed expressions (assuming that
-eval has case handlers for let expression whose action is to transform 
+eval has case handlers for let expression whose action is to transform
 into lambda expression application and eval it).
 
 if we add the following action for let* expressions in eval:

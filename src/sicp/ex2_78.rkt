@@ -4,14 +4,14 @@
 ;; be tagged.
 
 (define (type-tag datum)
-  (cond 
+  (cond
     [(pair? datum) (car datum)]
     [(number? datum) 'scheme-number]
-    [else 
+    [else
      (error "Bad tagged datum -- TYPE-TAG" datum)]))
 
 (define (contents datum)
-  (cond 
+  (cond
     [(pair? datum) (cdr datum)]
     [(number? datum) datum]
     [else

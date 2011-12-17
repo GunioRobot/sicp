@@ -6,7 +6,7 @@
   (let [x1 (first set)]
     (cond (empty? set) (cons x set)
           (= x x1) set
-          (< x x1) (cons x set)          
+          (< x x1) (cons x set)
           (> x x1) (cons x1 (adjoin-set x (rest set))))))
 
 (deftest test-adjoin

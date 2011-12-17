@@ -13,10 +13,10 @@
                 (stream-map (lambda (x) (list (stream-car s) x))
                             (stream-cdr t))
                 (stream-map (lambda (y) (list y (stream-car t)))
-                            (stream-cdr s)))                
+                            (stream-cdr s)))
                (pairs (stream-cdr s) (stream-cdr t)))))
 
-                              
-               
+
+
 
 

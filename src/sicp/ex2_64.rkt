@@ -32,13 +32,13 @@ Let us take an example:
 
   (list->tree '(1 3 5 7 9 11))
 
-We do 
-(partial-tree '(1 3 5 7 9 11) 6) 
+We do
+(partial-tree '(1 3 5 7 9 11) 6)
   => (partial-tree '(1 3 5 7 9 11) 2)
     => (partial-tree '(1 3 5 7 9 11) 0)
 
 At this point, we have found a leaf node. So, we push the null list,
-take the first element on the list as the parent and look for the 
+take the first element on the list as the parent and look for the
 right tree. The call returns to the previous call to partial-tree
 (i.e. (partial-tree '(1 3 5 7 9 11) 2)) which means n is 2.
 
@@ -50,7 +50,7 @@ So we invoke partial-tree for the right tree.
 
 This will push an empty list (as the left node) and look for right node.
 (partial-tree '(5 7 9 11) 0)
- 
+
 this gives us the subtree (1 () (3 () ()))
 
 At every stage of making a subtree, we cons it with the remaining elements.
@@ -71,5 +71,4 @@ part b. For each node, we do a cons of the tree under the node with the remainin
 elements. So the order of growth is O(n).
 
 |#
-                
-          
+

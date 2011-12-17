@@ -37,10 +37,10 @@
   (attach-tag 'rectangular (cons (* r (cos a)) (* r (sin a)))))
 
 ;;; constructors and selectors for polar form
-(define (real-part-polar z) (* (magnitude-polar z) 
+(define (real-part-polar z) (* (magnitude-polar z)
                                (cos (angle-polar z))))
 
-(define (imag-part-polar z) (* (magnitude-polar z) 
+(define (imag-part-polar z) (* (magnitude-polar z)
                                (sin (angle-polar z))))
 
 (define (magnitude-polar z) (car z))
@@ -112,7 +112,7 @@
       [(eq? op 'magnitude)
        (sqrt (+ (square x) (square y)))]
       [(eq? op 'angle) (atan y x)]
-      [else 
+      [else
        (error "unknown op" op)]))
   dispatch)
 

@@ -5,11 +5,11 @@
 (define (make-table same-key?)
   (let ((local-table (list '*table*)))
     (define (assoc key records)
-      (cond 
+      (cond
         ((null? records) #f)
         ((same-key? key (car (car records))) (car records))
         (else (assoc key (cdr records)))))
-    
+
     (define (lookup key-1 key-2)
       (let ((subtable (assoc key-1 (cdr local-table))))
         (if subtable
@@ -27,7 +27,7 @@
                   (set-cdr! subtable
                             (cons (cons key-2 value)
                                   (cdr subtable)))))
-            (set-cdr! local-table 
+            (set-cdr! local-table
                       (cons (list key-1
                                   (cons key-2 value))
                             (cdr local-table)))))
@@ -44,7 +44,7 @@
 ;(define put (operation-table 'insert-proc!))
 
 #|
-> (define numeric-table 
+> (define numeric-table
     (make-table (lambda (key-1 key-2) (< (abs (- key-2 key-1)) 2))))
 > (define get-val (numeric-table 'lookup-proc))
 > (define put-val (numeric-table 'insert-proc!))
@@ -56,5 +56,5 @@
 16
 > (get-val '5 4)
 16
-> 
+>
 |#

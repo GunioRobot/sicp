@@ -2,7 +2,7 @@
 
 #|
 
-mystery is trying to find the reverse of the list x. Too lazy to draw the ascii art. 
+mystery is trying to find the reverse of the list x. Too lazy to draw the ascii art.
 Too lazy to scan my notebook.
 
 |#

@@ -50,7 +50,7 @@
 
 ;; 3.1.2
 
-(define rand 
+(define rand
   (let ((x rand-init))
     (lambda ()
       (begin
@@ -67,12 +67,12 @@
 
 (define (monte-carlo trials experiment)
   (define (iter trials-remaining trials-passed)
-    (cond 
+    (cond
       ((= trials-remaining 0) (/ trials-passed trials))
       ((experiment) (iter (- trials-remaining 1) (+ trials-passed 1)))
       (else (iter (- trials-remaining 1) trials-passed))))
   (iter trials 0))
-      
+
 ;; using rand-update
 (define (estimate-pi2 trials)
   (sqrt (/ 6 (random-gcd-trials trials random-init))))
@@ -81,10 +81,10 @@
   (define (iter trials-remaining trials-passed x)
     (let ((x1 (rand-update x)))
       (let ((x2 (rand-update x1)))
-        (cond 
+        (cond
           ((= trials-ramaining 0) (/ trials-passed trials))
-          ((= (gcd x1 x2) 1) (iter (- trials-remaining 1) 
-                                   (+ trials-passed 1) 
+          ((= (gcd x1 x2) 1) (iter (- trials-remaining 1)
+                                   (+ trials-passed 1)
                                    x2))
           (else (iter (- trials-remaining 1)
                       trials-passed

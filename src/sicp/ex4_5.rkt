@@ -8,7 +8,7 @@
 
 (define (cond-arrow-clause? clause) (eq? (cadr (cond-actions clause)) '=>))
 (define (cond-arrow-clause-recipient clause) (caddr clause))
-(define (cond-actions clause) 
+(define (cond-actions clause)
   (if (cond-arrow-clause? clause)
       (apply (cond-arrow-clause-recipient clause) (cond-predicate clause))
       (cdr clause)))

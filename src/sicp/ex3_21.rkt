@@ -15,7 +15,7 @@
       (car (front-ptr queue))))
 (define (insert-queue! queue item)
   (let ((new-pair (cons item '())))
-    (cond 
+    (cond
       ((empty-queue? queue)
        (set-front-ptr! queue new-pair)
        (set-rear-ptr! queue new-pair)
@@ -44,6 +44,5 @@
           (display (front-queue q))
           (display " ")
           (print-queue (delete-queue! q))))))
-        
-      
-     
+
+

@@ -19,7 +19,7 @@ The apply-generic procedure is defined as follows:
 
 Here, we find the type-tag of z, in this case, it will be 'complex.
 The table constructed with the generic prodecure "magnitude" was using
-the type of z, namely 'rectangular. 
+the type of z, namely 'rectangular.
 
 The remedy as suggested by Alyssa is as follows:
 
@@ -38,7 +38,7 @@ procedure using (get op type-tag) which will give the right procedure.
 
 => (apply-generic 'magnitude '(complex rectangular x . y)
 
-=> ((get 'magnitude 'complex) '(rectangular x . y) 
+=> ((get 'magnitude 'complex) '(rectangular x . y)
 
 => (magnitude '(rectangular x . y))
 

@@ -9,6 +9,6 @@
 (define (cube-sum i j)
   (+ (* i i i) (* j j j)))
 
-(display-stream (stream-duplicates (stream-map (lambda (p) 
+(display-stream (stream-duplicates (stream-map (lambda (p)
                                                  (cube-sum (car p) (car (cdr p))))
                                                (weighted-pairs integers integers cube-sum))))

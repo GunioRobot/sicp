@@ -5,7 +5,7 @@
 by giving a unique number to each account, we are ordering the access to the account
 in a specific manner (say in the ascending order of the number). The reason why deadlock
 occurs is be cause of the concurrent access to the accounts in a specific order (Paul
-attempts to transfer a1 and a2 while Peter attempts to transfer a2 and a1. With the 
+attempts to transfer a1 and a2 while Peter attempts to transfer a2 and a1. With the
 suggested change, both will concurrently try to access a1 first but only one of them
 will get access while the other will wait until the serializer for a1 is released.
 

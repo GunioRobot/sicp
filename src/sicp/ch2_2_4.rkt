@@ -157,8 +157,8 @@
   ((segments->painter (list (make-segment (make-vect zero zero) (make-vect one one))
                             (make-segment (make-vect zero one) (make-vect one zero))))
    frame))
-    
-;; c.  The painter that draws a diamond shape by connecting the midpoints of the 
+
+;; c.  The painter that draws a diamond shape by connecting the midpoints of the
 ;;     sides of the frame.
 (define (diamond frame)
   (let ((v1 (make-vect 0.5 0))
@@ -168,10 +168,10 @@
     ((segments->painter (list (make-segment v1 v2)
                               (make-segment v2 v3)
                               (make-segment v3 v4)
-                              (make-segment v4 v1))) 
+                              (make-segment v4 v1)))
      frame)))
 
-;; d. The wave painter. 
+;; d. The wave painter.
 (define (waveman frame)
   (let ((p1 (make-vect 0.25 0))
         (p2 (make-vect 0.4 0.4))
@@ -215,4 +215,3 @@
       ((segments->painter (list s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 s14 s15 s16 s17))
        frame))))
 
-         

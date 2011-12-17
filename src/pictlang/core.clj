@@ -22,9 +22,9 @@
                       (paint [g]
                              (.drawImage g img 0 0 this))))]
     (doto bg
-      (.setColor Color/BLACK)      
+      (.setColor Color/BLACK)
       (.fillRect 0 0 (dim-frame 0) (dim-frame 1)))
-    
+
     (doto frame
       (.add panel)
       (.setSize (dim-frame 0) (dim-frame 1))

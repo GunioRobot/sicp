@@ -1,7 +1,7 @@
 #lang racket
 
 (define (type-height type)
-  (cond 
+  (cond
     ((eq? type 'integer) 0)
     ((eq? type 'rational) 1)
     ((eq? type 'real) 2)

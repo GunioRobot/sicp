@@ -7,7 +7,7 @@
 	s1 (map #(* % 2) (range 1 (inc l)))
 	s2 (map (fn [_] 1) (range 1 (inc l)))]
     (concat [0 1] (interleave s1 s2 s2))))
-;; we concat [0 1] because nth sequences are indexed from 0 
+;; we concat [0 1] because nth sequences are indexed from 0
 
 (defn den-seq [k]
   (if (= (rem k 3) 2)

@@ -40,12 +40,12 @@
 to handle '(complex complex) was not installed into the table. So, it gets the coercion
 table:
 
- (get-coersion 'complex 'complex) => complex->complex 
+ (get-coersion 'complex 'complex) => complex->complex
 
  (apply-generic 'exp (complex->complex a1) a2) => (apply-generic 'exp a1 a2)
 
 So, we keep calling ourselves until stack overflows.
- 
+
 |#
 
 #|
@@ -61,7 +61,7 @@ do a same type to same type coercion, it is fine. So, Louis is wrong.
 (define (apply-generic op . args)
   (let ((type-tags (map type-tag args)))
     (let ((proc (get op type-tags)))
-      (cond 
+      (cond
         (proc (apply proc (map contents args)))
         ((and (car type-tags) (cadr type-tags))
          (error "No procedure to handle the type" (car type-tags)))

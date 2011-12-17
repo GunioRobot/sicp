@@ -20,5 +20,4 @@
          (zero? (imag-part z))))
   (put '=zero? '(complex) =zero?)
   'done)
-        
-  
+

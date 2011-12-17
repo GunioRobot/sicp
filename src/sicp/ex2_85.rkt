@@ -11,7 +11,7 @@
        (let ((rat (rationalize (inexact->exact d) 1/100)))
          (make-rat (numerator rat)
                    (denominator rat)))))
-     
+
 ;; drop
 (define (drop x)
   (let ((project-fn (get 'project (list (type-tag x)))))

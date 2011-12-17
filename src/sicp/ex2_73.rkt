@@ -18,18 +18,18 @@ function which takes as input, the operands and the variable. The
 function will return the appropriate expressions for addition and
 multiplication.
 
-In theory we can define dispatch functions for number? and variable?. 
-But for those functions, the dispatch functions will return a 
+In theory we can define dispatch functions for number? and variable?.
+But for those functions, the dispatch functions will return a
 constant regardless of the input operands.
 |#
 
 ;; part b
-(define deriv-sum 
+(define deriv-sum
   (lambda (exp var)
     (make-sum (deriv (addend exp) var)
               (deriv (augend exp) var))))
 
-(define deriv-prod 
+(define deriv-prod
   (lambda (exp var)
     (make-sum (make-product (multiplier exp)
                             (deriv (multiplicand exp) var))

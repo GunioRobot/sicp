@@ -4,7 +4,7 @@
 
 ;; from the problem
 (def zero
-  (fn [f] (fn [x] 
+  (fn [f] (fn [x]
 	    x)))
 
 (defn add-1 [n]
@@ -50,7 +50,7 @@
 ;;
 ;; (m f) = takes a function f and composes a new function which composes
 ;; f, m times and applies this new function to x.
-;; 
+;;
 ;; (lambda (f) (lambda (x) ((m f) ((n f) x)))) will create this new
 ;; function which compose a given function n+m times and hence is equiv
 ;; to addition of m+n. Some simple repl experiments seem to verify the
@@ -61,7 +61,7 @@
 
 (comment
 (((add one two) inc) 1)
-;;=> 4  
+;;=> 4
 )
 
 ;; another definition of add is this:

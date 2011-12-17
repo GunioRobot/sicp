@@ -11,4 +11,4 @@
 
 (define (reverse2 coll)
   (fold-left (lambda (x y) (cons y x)) '() coll))
-  
+

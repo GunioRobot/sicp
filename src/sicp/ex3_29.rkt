@@ -6,7 +6,7 @@
 |#
 
 (define (or-gate o1 o2 output)
-  (let ((a1 (make-wire)) 
+  (let ((a1 (make-wire))
         (a2 (make-wire))
         (a3 (make-wire))
         (a4 (make-wire)))

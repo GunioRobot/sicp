@@ -26,14 +26,14 @@
       (cadr expr)
       #f))
 
-(define (let-bindings expr) 
-  (if (let-name expr) 
+(define (let-bindings expr)
+  (if (let-name expr)
       (caddr expr)
       (cadr expr)))
 
 (define (let-bindings-variables bindings) (map car bindings))
 (define (let-bindings-values bindings) (map cadr bindings))
-(define (let-body expr) 
+(define (let-body expr)
   (if (let-name expr)
       (cdddr expr)
       (cddr expr)))
